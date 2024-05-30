@@ -17,19 +17,19 @@
 </head>
 <body>
     <!-- Substitua 'caminho_para_sua_logo.png' pelo caminho da imagem da sua logo -->
-    <img id="logo" src="C:\Users\ADM\Desktop\App Retirada\logo.png" alt="Logo da Empresa">
+    <img id="logo" src="logo.png" alt="Logo da Empresa">
 
     <h2>Registro de Pedidos</h2>
-    <label for="pedido">N˙mero do Pedido:</label>
+    <label for="pedido">N√∫mero do Pedido:</label>
     <input type="text" id="pedido" name="pedido">
-    <label for="horario">Hor·rio de Retirada:</label>
+    <label for="horario">Hor√°rio de Retirada:</label>
     <input type="time" id="horario" name="horario">
     <button onclick="adicionarAlarme()">Adicionar Alarme</button>
 
     <div id="listaPedidos"></div>
 
-    <!-- Substitua 'C:\Users\ADM\Desktop\App Retirada\logo.png' pelo caminho do seu arquivo de ·udio -->
-    <audio id="somAlarme" src="C:\Users\ADM\Desktop\App Retirada\notificacao.mp3" preload="auto"></audio>
+    <!-- Substitua 'C:\Users\ADM\Desktop\App Retirada\logo.png' pelo caminho do seu arquivo de √°udio -->
+    <audio id="somAlarme" src="notificacao.mp3" preload="auto"></audio>
 
     <script>
         var listaPedidos = [];
@@ -38,17 +38,17 @@
             var pedido = document.getElementById('pedido').value;
             var horario = document.getElementById('horario').value;
 
-            // Adiciona o pedido ‡ lista
+            // Adiciona o pedido √† lista
             listaPedidos.push({pedido: pedido, horario: horario});
             atualizarListaPedidos();
 
-            // Converte o hor·rio de retirada para um objeto Date
+            // Converte o hor√°rio de retirada para um objeto Date
             var dataRetirada = new Date();
             dataRetirada.setHours(horario.split(":")[0]);
             dataRetirada.setMinutes(horario.split(":")[1]);
             dataRetirada.setSeconds(0);
 
-            // Subtrai 15 minutos do hor·rio de retirada para o alarme
+            // Subtrai 15 minutos do hor√°rio de retirada para o alarme
             dataRetirada.setMinutes(dataRetirada.getMinutes() - 15);
 
             // Cria o alarme
@@ -66,7 +66,7 @@
             for (let i = 0; i < listaPedidos.length; i++) {
                 var divPedido = document.createElement('div');
                 divPedido.className = 'pedido';
-                divPedido.innerHTML = 'Pedido: ' + listaPedidos[i].pedido + '<br>Hor·rio de Retirada: ' + listaPedidos[i].horario;
+                divPedido.innerHTML = 'Pedido: ' + listaPedidos[i].pedido + '<br>Hor√°rio de Retirada: ' + listaPedidos[i].horario;
                 var btnEditar = document.createElement('button');
                 btnEditar.innerHTML = 'Editar';
                 btnEditar.className = 'btnAcao';
@@ -83,8 +83,8 @@
 
         function criarFuncaoEditar(index) {
             return function() {
-                var pedido = prompt("Digite o novo n˙mero do pedido:", listaPedidos[index].pedido);
-                var horario = prompt("Digite o novo hor·rio de retirada:", listaPedidos[index].horario);
+                var pedido = prompt("Digite o novo n√∫mero do pedido:", listaPedidos[index].pedido);
+                var horario = prompt("Digite o novo hor√°rio de retirada:", listaPedidos[index].horario);
                 if (pedido != null && horario != null) {
                     listaPedidos[index] = {pedido: pedido, horario: horario};
                     atualizarListaPedidos();
